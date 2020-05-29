@@ -1,5 +1,6 @@
 Particle[] particles;
 float alpha;
+float heleCirkel = TWO_PI;
 
 void setup() {
   size(900, 400);
@@ -13,17 +14,18 @@ void draw() {
   alpha = map(mouseX, 0, width, 5, 35);
   fill(0, alpha);
   rect(0, 0, width, height);
-
+  
   loadPixels();
   for (Particle p : particles) {
     p.move();
   }
   updatePixels();
+  clock();
 }
 
 void setParticles() {
-  particles = new Particle[50000];
-  for (int i = 0; i < 50000; i++) { 
+  particles = new Particle[10000];
+  for (int i = 0; i < 10000; i++) { 
     float x = random(width);
     float y = random(height);
     float adj = map(y,0, x, 255, 0);
@@ -69,3 +71,23 @@ class Particle {
   setParticles();
   }
 }
+  public void clock(){
+    translate(width/2,height/2);
+  rotate(-heleCirkel/4);
+  
+  noFill();
+  strokeWeight(20);
+  strokeCap(SQUARE);
+
+  stroke(0, 255, 0);
+  float s = map(second(), 0, 60, 0, heleCirkel);
+  arc(0, 0, 70, 70, 0, s);
+
+  stroke(255, 0, 0);
+  float m = map(minute(), 0, 60, 0, heleCirkel);
+  arc(0, 0, 120, 120, 0, m);
+
+  stroke(0, 0, 255);
+  float h = map(hour(), 0, 60, 0, heleCirkel);
+  arc(0, 0, 170, 170, 0, h);
+  }
