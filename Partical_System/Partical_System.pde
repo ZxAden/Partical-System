@@ -14,7 +14,7 @@ void draw() {
   alpha = map(mouseX, 0, width, 5, 35);
   fill(0, alpha);
   rect(0, 0, width, height);
-  
+
   loadPixels();
   for (Particle p : particles) {
     p.move();
@@ -28,7 +28,7 @@ void setParticles() {
   for (int i = 0; i < 10000; i++) { 
     float x = random(width);
     float y = random(height);
-    float adj = map(y,0, x, 255, 0);
+    float adj = map(y, 0, x, 255, 0);
     int c = color(40, adj, 255);
     particles[i]= new Particle(x, y, c);
   }
@@ -68,13 +68,13 @@ class Particle {
     if (posY > height) posY =  0;
   }
   void mousePressed() {
-  setParticles();
+    setParticles();
   }
 }
-  public void clock(){
-    translate(width/2,height/2);
+public void clock() {
+  translate(width/2, height/2);
   rotate(-heleCirkel/4);
-  
+
   noFill();
   strokeWeight(20);
   strokeCap(SQUARE);
@@ -90,4 +90,4 @@ class Particle {
   stroke(0, 0, 255);
   float h = map(hour(), 0, 60, 0, heleCirkel);
   arc(0, 0, 170, 170, 0, h);
-  }
+}
