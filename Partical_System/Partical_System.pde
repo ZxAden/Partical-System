@@ -77,7 +77,6 @@ public void clock() {
 
   noFill();
   strokeWeight(20);
-  //strokeCap(SQUARE);
 
   stroke(0, 255, 0);
   float s = map(second(), 0, 60, 0, heleCirkel);
