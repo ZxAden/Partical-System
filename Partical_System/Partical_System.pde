@@ -6,7 +6,7 @@ void setup() {
   size(900, 400);
   background(0);
   noStroke();
-  setParticles();
+  Particles();
 }
 
 void draw() {
@@ -23,13 +23,13 @@ void draw() {
   clock();
 }
 
-void setParticles() {
+void Particles() {
   particles = new Particle[10000];
   for (int i = 0; i < 10000; i++) { 
     float x = random(width);
     float y = random(height);
     float adj = map(y, 0, x, 255, 0);
-    int c = color(40, adj, 255);
+    int c = color(255, adj, 40);
     particles[i]= new Particle(x, y, c);
   }
 }
@@ -68,7 +68,7 @@ class Particle {
     if (posY > height) posY =  0;
   }
   void mousePressed() {
-    setParticles();
+    Particles();
   }
 }
 public void clock() {
@@ -77,7 +77,7 @@ public void clock() {
 
   noFill();
   strokeWeight(20);
-  strokeCap(SQUARE);
+  //strokeCap(SQUARE);
 
   stroke(0, 255, 0);
   float s = map(second(), 0, 60, 0, heleCirkel);
