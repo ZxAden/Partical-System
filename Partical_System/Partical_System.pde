@@ -2,7 +2,7 @@ Particle[] particles;
 float alpha;
 
 void setup() {
-  size(900, 200);
+  size(900, 400);
   background(0);
   noStroke();
   setParticles();
@@ -22,11 +22,11 @@ void draw() {
 }
 
 void setParticles() {
-  particles = new Particle[6000];
-  for (int i = 0; i < 6000; i++) { 
+  particles = new Particle[50000];
+  for (int i = 0; i < 50000; i++) { 
     float x = random(width);
     float y = random(height);
-    float adj = map(y, 0, height, 255, 0);
+    float adj = map(y,0, x, 255, 0);
     int c = color(40, adj, 255);
     particles[i]= new Particle(x, y, c);
   }
@@ -48,7 +48,7 @@ class Particle {
   }
 
   void update() {
-    incr +=  .008;
+    incr +=  alpha/1000;
     pathway = noise(posX * .006, posY * .004, incr) * TWO_PI;
     posX += 2 * cos(pathway);
     posY += 2 * sin(pathway);
